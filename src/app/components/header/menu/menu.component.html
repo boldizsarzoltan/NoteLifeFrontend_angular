@@ -1,0 +1,21 @@
+<div>
+
+  <button mat-button [matMenuTriggerFor]="menu" *ngIf="notLoggedIn()">Menu</button>
+  <mat-menu #menu="matMenu" >
+    <a [routerLink]="['']"   [routerLinkActive]="['active-link']"  [routerLinkActiveOptions]="{ exact: true }" mat-menu-item >{{ 'Home'}}</a>
+    <a [routerLink]="[ '/login' ]"   [routerLinkActive]="['active-link']" mat-menu-item>{{ 'Login'}}</a>
+    <a [routerLink]="[ '/register' ]"  [routerLinkActive]="['active-link']" mat-menu-item>{{ 'Register' }}</a>
+  </mat-menu>
+</div>
+
+<div>
+
+  <button mat-button [matMenuTriggerFor]="normal" *ngIf="isNormalUser()">Menu</button>
+  <mat-menu #normal="matMenu">
+    <a [routerLink]=" ['']"   [routerLinkActive]="['active-link']"  [routerLinkActiveOptions]="{ exact: true }" mat-menu-item>{{ 'Home' }}</a>
+    <a [routerLink]="['/profile']"   [routerLinkActive]="['active-link']" mat-menu-item>{{ 'Profile' }}</a>
+    <a [routerLink]="['/list-reminders']"   [routerLinkActive]="['active-link']" mat-menu-item>{{ 'List Reminders' }}</a>
+    <a [routerLink]="['/list-events']"   [routerLinkActive]="['active-link']" mat-menu-item>{{ 'List Events' }}</a>
+  </mat-menu>
+
+</div>

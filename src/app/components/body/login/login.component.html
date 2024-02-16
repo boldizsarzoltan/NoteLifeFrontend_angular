@@ -1,0 +1,24 @@
+<div>
+  <div class="form-wrapper">
+    <p>
+      {{ 'Login' }}
+    </p>
+    <div>
+      <div class="first-row">
+        <mat-form-field>
+          <p>{{ 'Username' }}</p>
+          <input matInput type="text" [(ngModel)]="username">
+        </mat-form-field>
+      </div>
+      <div class="second-row">
+        <mat-form-field>
+          <p>{{ 'Password' }}</p>
+          <input matInput type="password" [(ngModel)]="password">
+        </mat-form-field>
+      </div>
+      <div>
+        <button (click)="onLoginClick()" [disabled]="!canLoginClick()">{{ 'Login' }}</button>
+      </div>
+    </div>
+  </div>
+</div>

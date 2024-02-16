@@ -1,0 +1,33 @@
+<div>
+  <div class="form-wrapper">
+    <p>
+      {{ 'Event' }}
+    </p>
+    <div>
+      <div class="first-row">
+        <mat-form-field>
+          <p> {{ 'Title' }}</p>
+          <input matInput type="text" [(ngModel)]="username">
+          <br>
+        </mat-form-field>
+      </div>
+      <div class="second-row">
+        <mat-form-field>
+          <p>{{ 'Description' }}</p>
+          <input matInput type="password" [(ngModel)]="password">
+          <br>
+        </mat-form-field>
+      </div>
+      <div class="third-row">
+        <mat-form-field>
+          <p>{{ 'Date time' }}</p>
+          <input matInput type="password" [(ngModel)]="date_time">
+          <br>
+        </mat-form-field>
+      </div>
+      <div>
+        <button (click)="onRegisterClick()">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
