@@ -20,8 +20,9 @@ export class LoginService {
     let information: LoginInformation = {user_name: userName, password: password};
     return this.httpLogin.login(information).pipe(
       map((response: LoginResponse) => {
+        console.log(response);
         if (response.successful) {
-          this.authService.setToken(response.token);
+          this.authService.setToken(response.access_token);
           this.authService.setRefreshToken(response.refresh_token);
           this.authService.setRole(ROLE_USER);
           return response;

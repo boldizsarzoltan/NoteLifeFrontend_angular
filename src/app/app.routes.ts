@@ -62,5 +62,15 @@ export const routes: Routes = [
     component: ReminderListComponent,
     canActivate: [LoggedInGuard],
   },
+  {
+    path: 'reminder',
+    component: ReminderComponent,
+    canActivate: [LoggedInGuard],
+  },
+  {
+    path: 'event',
+    component: EventComponent,
+    canActivate: [LoggedInGuard],
+  },
   { path: '**', component: Page404Component},
 ];

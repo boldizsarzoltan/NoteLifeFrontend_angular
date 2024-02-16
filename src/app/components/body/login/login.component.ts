@@ -21,6 +21,7 @@ import {LoginResponse} from "../../../types/Login";
 export class LoginComponent {
   password: string = "";
   username: string = "";
+
   constructor(
     private loginService: LoginService,
     private routerService: RouterService,

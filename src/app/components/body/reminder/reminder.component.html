@@ -7,33 +7,36 @@
       <div class="first-row">
         <mat-form-field>
           <p> {{ 'Title' }}</p>
-          <input matInput type="text" [(ngModel)]="username">
+          <input matInput type="text" [(ngModel)]="title">
           <br>
         </mat-form-field>
       </div>
       <div class="second-row">
         <mat-form-field>
           <p>{{ 'Description' }}</p>
-          <input matInput type="password" [(ngModel)]="password">
+          <input matInput type="password" [(ngModel)]="description">
           <br>
         </mat-form-field>
       </div>
       <div class="third-row">
         <mat-form-field>
           <p>{{ 'Start time' }}</p>
-          <input matInput type="password" [(ngModel)]="start_time">
+          <input matInput [matDatepicker]="start_time_picker" [(ngModel)]="start_time">
+          <mat-datepicker-toggle matIconSuffix [for]="start_time_picker"></mat-datepicker-toggle>
+          <mat-datepicker #start_time_picker></mat-datepicker>
           <br>
         </mat-form-field>
       </div>
       <div class="fourth-row">
-        <mat-form-field>
-          <p>{{ 'End time' }}</p>
-          <input matInput type="password" [(ngModel)]="password">
-          <br>
+        <p>{{ 'End time' }}</p>
+        <mat-form-field class="example-full-width">
+          <input matInput [matDatepicker]="picker" [(ngModel)]="end_time">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
       <div>
-        <button (click)="onRegisterClick()">Create</button>
+        <button (click)="onCreateClick()" [disabled]="!canClickCreate()" >Create</button>
       </div>
     </div>
   </div>

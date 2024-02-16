@@ -11,8 +11,8 @@ export class HttpService {
 
   }
 
-  getRequest(requestUrl: string): Observable<any> {
-    return this.http.get<any>(requestUrl);
+  getRequest(requestUrl: string, headers: HttpHeaders): Observable<any> {
+    return this.http.get<any>(requestUrl, {headers:headers});
   }
 
   postRequest(requestUrl: string, body: any, headers: HttpHeaders): Observable<any> {

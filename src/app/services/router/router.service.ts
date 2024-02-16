@@ -21,4 +21,12 @@ export class RouterService {
   redirectToLogin(): void {
     this.router.navigate(['/login']);
   }
+
+  redirectToReminderList(): void {
+    this.router.navigate(['/list_reminders']);
+  }
+
+  redirectToReminderCreate(): void {
+    this.router.navigate(['/reminder']);
+  }
 }

@@ -8,7 +8,7 @@ export interface RefreshToken{
 }
 
 export interface BaseLoginResponse extends RefreshToken{
-  token: string;
+  access_token: string;
   role: string;
 }
 

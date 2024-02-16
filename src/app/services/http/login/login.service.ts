@@ -28,7 +28,7 @@ export class LoginService {
       .pipe(map((baseLogin: BaseLoginResponse) => {
           let fullResponse: LoginResponse = {
             successful: true,
-            token: baseLogin.token,
+            access_token: baseLogin.access_token,
             refresh_token: baseLogin.refresh_token,
             message: "",
             role: baseLogin.role
@@ -51,7 +51,7 @@ export class LoginService {
     console.log(error);
     let fullResponse: LoginResponse = {
       successful: false,
-      token: "",
+      access_token: "",
       refresh_token: "",
       role: "",
       message: message
