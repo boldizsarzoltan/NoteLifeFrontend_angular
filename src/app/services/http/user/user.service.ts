@@ -58,21 +58,4 @@ export class UserService {
     };
     return of(fullResponse);
   }
-
-  deleteUser(id: BigInt): Observable<boolean> {
-    return this.http.deleteRequest(this.baseUrl + "delete/" + id).pipe(
-      catchError(() =>{
-        return of([]);
-      })
-    ).pipe(
-      map(
-        res => {
-          let result = true;
-          if(res != null) {
-            result = false;
-          }
-          return result;
-        }
-      ));
-  }
 }

@@ -1,5 +1,12 @@
 import {Injectable} from '@angular/core';
-import {NewReminder, Reminder, ReminderListResponse, ReminderResponse} from "../../types/Reminder";
+import {
+  NewReminder,
+  Reminder,
+  ReminderDelete,
+  ReminderDeleteResponse,
+  ReminderListResponse,
+  ReminderResponse
+} from "../../types/Reminder";
 import {LoginService as HttpLoginService} from "../http/login/login.service";
 import {AuthService} from "../auth/auth.service";
 import {ReminderService as HttpReminderService} from "../http/reminder/reminder.service";
@@ -12,7 +19,6 @@ export class ReminderService {
 
   constructor(
     private httpReminderService: HttpReminderService,
-    private authService: AuthService,
   ) {
 
   }
@@ -37,5 +43,10 @@ export class ReminderService {
 
   getList():Observable<ReminderListResponse> {
     return this.httpReminderService.getList();
+  }
+
+  delete(reminderId: BigInt): Observable<ReminderDeleteResponse> {
+    let deleteRequest: ReminderDelete = { id: reminderId };
+    return this.httpReminderService.delete(deleteRequest);
   }
 }

@@ -19,8 +19,8 @@ export class HttpService {
     return this.http.post<any>(requestUrl, body, {headers});
   }
 
-  deleteRequest(requestUrl: string): Observable<any> {
-    return this.http.delete(requestUrl);
+  deleteRequest(requestUrl: string, headers: HttpHeaders): Observable<any> {
+    return this.http.delete(requestUrl, {headers:headers});
   }
 
   patchRequest(requestUrl: string, body: any): Observable<any> {

@@ -11,7 +11,7 @@ import {
   MatRowDef,
   MatTable
 } from "@angular/material/table";
-import {Reminder, ReminderListResponse} from "../../../types/Reminder";
+import {ReminderDeleteResponse, ReminderListResponse} from "../../../types/Reminder";
 import {ReminderService} from "../../../services/reminder/reminder.service";
 import {RouterService} from "../../../services/router/router.service";
 
@@ -35,7 +35,7 @@ import {RouterService} from "../../../services/router/router.service";
 })
 export class ReminderListComponent {
 
-  displayedColumns: string[] = ['id', 'title', 'start_time', 'end_time'];
+  displayedColumns: string[] = ['id', 'title', 'start_time', 'end_time', 'customColumn'];
   dataSource:any[] = [];
 
   constructor(
@@ -47,7 +47,7 @@ export class ReminderListComponent {
     this.getReminders();
   }
 
-  private getReminders() {
+  public getReminders() {
     this.reminderService.getList().subscribe(
       (reminderResponse: ReminderListResponse) => {
         if (!reminderResponse.success) {
@@ -61,5 +61,17 @@ export class ReminderListComponent {
 
   redirectToCreate(): void {
     this.routerService.redirectToReminderCreate()
+  }
+
+  deleteReminder(reminderId: BigInt): void {
+    this.reminderService.delete(reminderId).subscribe(
+      (reminderResponse: ReminderDeleteResponse) => {
+        if (!reminderResponse.success) {
+          alert(reminderResponse.message);
+          return;
+        }
+        this.getReminders();
+      }
+    );
   }
 }

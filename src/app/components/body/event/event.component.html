@@ -7,26 +7,28 @@
       <div class="first-row">
         <mat-form-field>
           <p> {{ 'Title' }}</p>
-          <input matInput type="text" [(ngModel)]="username">
+          <input matInput type="text" [(ngModel)]="title">
           <br>
         </mat-form-field>
       </div>
       <div class="second-row">
         <mat-form-field>
           <p>{{ 'Description' }}</p>
-          <input matInput type="password" [(ngModel)]="password">
+          <input matInput type="password" [(ngModel)]="description">
           <br>
         </mat-form-field>
       </div>
       <div class="third-row">
         <mat-form-field>
           <p>{{ 'Date time' }}</p>
-          <input matInput type="password" [(ngModel)]="date_time">
+          <input matInput [matDatepicker]="date_time_picker" [(ngModel)]="date_time">
+          <mat-datepicker-toggle matIconSuffix [for]="date_time_picker"></mat-datepicker-toggle>
+          <mat-datepicker #date_time_picker></mat-datepicker>
           <br>
         </mat-form-field>
       </div>
       <div>
-        <button (click)="onRegisterClick()">Create</button>
+        <button (click)="onCreateClick()" [disabled]="!canClickCreate()" >Create</button>
       </div>
     </div>
   </div>

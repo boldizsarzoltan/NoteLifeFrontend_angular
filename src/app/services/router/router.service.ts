@@ -29,4 +29,12 @@ export class RouterService {
   redirectToReminderCreate(): void {
     this.router.navigate(['/reminder']);
   }
+
+  redirectToEventList(): void {
+    this.router.navigate(['/list_events']);
+  }
+
+  redirectToEventCreate(): void {
+    this.router.navigate(['/event']);
+  }
 }

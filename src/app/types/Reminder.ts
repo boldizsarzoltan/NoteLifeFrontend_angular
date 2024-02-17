@@ -20,3 +20,12 @@ export interface ReminderListResponse {
   success:boolean;
   message:string;
 }
+
+export interface ReminderDelete {
+  id:BigInt;
+}
+
+export interface ReminderDeleteResponse {
+  success:boolean;
+  message:string;
+}

@@ -2,7 +2,13 @@ import { Injectable } from '@angular/core';
 import {BaseLoginResponse, LoginInformation, LoginResponse} from "../../../types/Login";
 import {catchError, map, Observable, of} from "rxjs";
 import {HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {NewReminder, Reminder, ReminderListResponse, ReminderResponse} from "../../../types/Reminder";
+import {
+  NewReminder,
+  Reminder, ReminderDelete,
+  ReminderDeleteResponse,
+  ReminderListResponse,
+  ReminderResponse
+} from "../../../types/Reminder";
 import {environment} from "../../../../environments/environment";
 import {HttpService} from "../basicHttpClient/basic-http-client.service";
 import {AuthService} from "../../auth/auth.service";
@@ -90,6 +96,37 @@ export class ReminderService {
       success: false,
       message: error.message,
       list:[]
+    };
+    return of(fullResponse);
+  }
+
+  delete(deleteRequest: ReminderDelete): Observable<ReminderDeleteResponse> {
+    const headers: HttpHeaders = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Access-Control-Allow-Origin', "*")
+      .set('Access-Control-Allow-Headers', "X-Requested-With")
+      .set('Authorization', this.authService.getToken() ?? "")
+    ;
+    return this.http.deleteRequest(this.configUrl + deleteRequest.id, headers)
+      .pipe(map(() => {
+          let fullResponse: ReminderDeleteResponse = {
+            success: true,
+            message: "",
+          };
+          return fullResponse;
+        }
+      ))
+      .pipe(
+        catchError(err => {
+          return ReminderService.handleError3(err);
+        })
+      );
+  }
+
+  private static handleError3(error: HttpErrorResponse): Observable<ReminderDeleteResponse> {
+    let fullResponse: ReminderDeleteResponse = {
+      success: false,
+      message: error.message,
     };
     return of(fullResponse);
   }
